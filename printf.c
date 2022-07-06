@@ -14,28 +14,26 @@ int _printf(const char *format, ...)
 
 	 va_start(args, format);	/*initialize arguments list*/
 
-	while (format && format[const1])	/*check and recognize the length of format*/
+	while (format)	/*check and recognize the length of format*/
 	{
-		while (format[const1] != '%')	/*recognize and position in the % indicator*/
+		if (format[const1] == '%')	/*recognize and position in the % indicator*/
 		{
-			return(0);
-		}
-
-		const2 = 0;
-		while (funcs_ls[const2 + 1].types)	/*recognize and position the next character*/
-		{
-			if (format[const1] == funcs_ls[const2 + 1].types)	/*compare the string character by character*/
+			const2 = 0;
+			while (funcs_ls[const2 + 1].types)	/*recognize and position the next character*/
 			{
-				str = funcs_ls[const2].f(args);		/*print the format*/
-				_putchar(str);
+				if (format[const1] == funcs_ls[const2 + 1].types)	/*compare the string character by character*/
+				{
+					str = funcs_ls[const2].f(args);		/*print the format*/
+					_putchar(str);
+				}
+				const2 += 2;	/*print the following characters*/
 			}
-			const2 += 2;	/*print the following characters*/
 		}
-		const2++;	/*print the string*/
+		const1++;	/*print the string*/
 	}
-	return (str);	/*Returns the number of characters printed*/
+	va_end(args);
+	return (const1);	/*Returns the number of characters printed*/
 
-	 va_end(args);
 }
 
   /*format functions*/

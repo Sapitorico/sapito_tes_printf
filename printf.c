@@ -16,11 +16,11 @@ int _printf(const char *format, ...)
 
 	while (format && format[const1])	/*check and recognize the length of format*/
 	{
-		while (format[const1] == '%')	/*recognize and position in the % indicator*/
+		while (format[const1] != '%')	/*recognize and position in the % indicator*/
 		{
-			_putchar(format[const1]);
-				const1++;
+			return(0);
 		}
+
 		const2 = 0;
 		while (funcs_ls[const2 + 1].types)	/*recognize and position the next character*/
 		{
@@ -31,9 +31,9 @@ int _printf(const char *format, ...)
 			}
 			const2 += 2;	/*print the following characters*/
 		}
-		const1++;	/*print the string*/
+		const2++;	/*print the string*/
 	}
-	return (const1);	/*Returns the number of characters printed*/
+	return (str);	/*Returns the number of characters printed*/
 
 	 va_end(args);
 }
@@ -59,7 +59,7 @@ int print_string(va_list arg)
 		i++;
 		_putchar(str[i]);
 	}
-	return (i);
+	return (0);
 }
 /*indicator function*/
 int print_indic(va_list arg)
@@ -68,5 +68,5 @@ int print_indic(va_list arg)
 
 	in = va_arg(arg, int);
 		_putchar(in);
-	return (in);
+	return (0);
 }

@@ -1,23 +1,23 @@
-#ifndef PRINT_FORMATTED_H
-#define PRINT_FORMATTED_H
+#ifndef _PRINTF_H
+#define _PRINTF_H
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
 /*PROTOTYPES*/
-typedef strut type_f
+typedef struct f_types
 {
     char types;
     int (*f)(va_list arg);
-} type_f_t;
+} f_types_t;
 
 int _putchar(char c);
 
 int _printf(const char *format, ...);
 
-/*PROTOTPYES FUNCTIONS*/
+/*PROTOTPEYS FUNCTIONS*/
 
 int print_char(va_list arg);
 int print_string(va_list arg);
-int print_op(va_list arg)
+int print_indic(va_list arg);
 
-#endif PRINT_FORMATTED_H
+#endif /*_PRINTF_H*/

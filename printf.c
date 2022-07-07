@@ -1,7 +1,7 @@
 #include "_printf.h"
 #include <string.h>
 
-int (*get_op_format(const char *str))(va_list arg)
+int (*get_op_format(const char *format))(va_list arg)
 {
 	f_types_t funcs_ls[] = {	/*type_format_functions strunct*/
 		{'c', print_char},
@@ -11,7 +11,7 @@ int (*get_op_format(const char *str))(va_list arg)
 
 	while (funcs_ls[i].types)
 	{
-		if (*str == funcs_ls[i].types)
+		if (*format == funcs_ls[i].types)
 			return (funcs_ls[i].f);
 		i++;
 	}
@@ -25,8 +25,11 @@ int _printf(const char *format, ...)
 	 int (*f)(va_list arg);
 
 	 va_start(args, format);	 /*initialize arguments list*/
+	 if (!format)
+		 return (-1);
 
-	while (format[const1])	/*check and recognize the length of format*/
+
+	while (format[const1] != '\0')	/*check and recognize the length of format*/
 	{
 		for (; format[const1] != '%' && format[const1]; const1++)	/*recognize and position in the % indicator*/
 		{
@@ -47,6 +50,7 @@ int _printf(const char *format, ...)
 				return(-1);
 		_putchar(format[const1]);
 		const2++;	/*print the string*/
+
 		if(format[const1 + 1] == '%')
 			const1 += 2;
 		else
@@ -72,10 +76,12 @@ int print_string(va_list arg)
 	int i = 0;
 
 	str = va_arg(arg, char *);
+	if (!str)
+		return (0);
 	while (str[i])
 	{
-		i++;
 		_putchar(str[i]);
+		i++;
 	}
-	return (1);
+	return (i);
 }

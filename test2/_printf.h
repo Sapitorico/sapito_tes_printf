@@ -1,9 +1,8 @@
 #ifndef _PRINTF_H
 #define _PRINTF_H
-#include <stdio.h>
 #include <stdarg.h>
-#include <stdlib.h>
-#include <string.h>
+#include <stdio.h>
+#include <limits.h>
 /*PROTOTYPES*/
 typedef struct f_types
 {

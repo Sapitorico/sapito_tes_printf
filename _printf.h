@@ -20,5 +20,7 @@ int _printf(const char *format, ...);
 int print_char(va_list arg);
 int print_string(va_list arg);
 int print_indic(va_list arg);
+int print_int(va_list arg);
+int print_decimal(va_list arg);
 
 #endif /*_PRINTF_H*/

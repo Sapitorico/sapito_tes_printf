@@ -5,7 +5,8 @@ int (*get_format(const char *format))(va_list arg)
                 {'c', print_char},
                 {'s', print_string},
 		{'i', print_int},
-		{'d', print_decimal}
+		{'d', print_decimal},
+		{'b', print_bin}
         };
         int i = 0;
 
@@ -112,4 +113,19 @@ int print_int(va_list arg)
 int print_decimal(va_list arg)
 {
 	return (print_int(arg));
+}
+int print_bin(va_list arg)
+{
+	long int bin = 0;
+	int remainder;
+	int i = 0;
+
+	bin = va_arg(arg, int);
+	while (bin != 0)
+	{
+		remainder = bin % 2;
+		bin /= 2;
+		bin += remaider * i;
+		i *= 10;
+	}
 }

@@ -53,7 +53,10 @@ The _printf function (which derives its name from "print formatted") prints a me
 
 ------------
 # FILES
+
 ##_printf.c
+
+
     int _printf(const char *format, ...)		/**prototype function _printf**/
     {
             va_list args;
@@ -95,12 +98,17 @@ The _printf function (which derives its name from "print formatted") prints a me
             va_end(args);
             return (const2);      	  /*Returns the number of characters printed*/
     }
+
 ##FLOWCHART
+
 #### get_formatted_funct.c
+
 **prototype**
 
 `int (*get_formatted_funct(const char *format))(va_list arg);`
+
 ####functions structure:
+
 ```c
  f_types_t funcs_ls[] = {
                 {'c', print_char},
@@ -114,19 +122,25 @@ The _printf function (which derives its name from "print formatted") prints a me
 **description:**This function is responsible for finding a match with the parameter received in the structure (funcs_ls), calls the function corresponding to that format, returns a pointer to that specifier function and the number of characters that are stored in the count variable ```c
 if (*format == funcs_ls[i].types)
                         return (funcs_ls[i].f);
-```Compare a format structure with the received argument pattern and return the corresponding function
+``` 
+-Compare a format structure with the received argument pattern and return the corresponding function
 
 #main.h
+
 ####main.h: 
+
 contains all function prototypes used for _printf.
 
 ###flowchar
+
 #### print_characters.c
+
 |  prototype | type  |  description |
 | ------------ | ------------ | ------------ |
 | `int print_char(va_list arg)`  | %c  | function in charge print characters  |
 
 #### print_numbers.c
+
 |  prototype | type  | description |
 | ------------ | ------------ | ------------ |
 | `int print_int(va_list arg);` | %i  | function that prints integers  |
@@ -134,6 +148,7 @@ contains all function prototypes used for _printf.
 | `int print_unsig_deci(va_list arg);` | %u | function that prints unsigned integers |
 
 ### print_string.c
+
 |  prototype | type  | description |
 | ------------ | ------------ | ------------ |
 | `int print_string(va_list arg);` | %s | function that prints a string |

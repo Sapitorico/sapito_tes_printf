@@ -1,6 +1,4 @@
-#include <limits.h>
-#include <stdio.h>
-#include "_printf.h"
+#include "main.h"
 
 /**
  * main - Entry point
@@ -9,17 +7,22 @@
  */
 int main(void)
 {
-	printf("Negative:[%d]\n", -762534);
-	_printf("Negative:[%d]\n", -32432);
-	printf("Negative:[%i]\n", -762534);
-	_printf("Negative:[%i]\n", -111100);
-	_printf("Character:[%c]\n", 'H');
-	printf("Character:[%c]\n", 'H');
-	_printf("String:[%s]\n", "I am a string !");
-	printf("String:[%s]\n", "I am a string !");
-	_printf("Percent:[%%]\n");
-	printf("Percent:[%%]\n");
-	_printf("%b\n", 98);
-	return (0);
-}
+	int len;
+	int len2;
 
+	len = _printf("Let's try to printf a simple sentence.\n");
+	len2 = printf("Let's try to printf a simple sentence.\n");
+	len = _printf("Percent:[%%]\n");
+	len2 = printf("Percent:[%%]\n");
+	_printf("Len:[%d]\n", len);
+	printf("Len:[%d]\n", len2);	
+        _printf("Character:[%c]\n", 'S');
+        _printf("String:[%s]\n", "I am a string de sapito !");
+       _printf("Percent:[%%]\n");
+        _printf("%!\n");
+        _printf("Negative:[%d]\n", -2343243240);
+        _printf("Negative:[%i]\n", -7602342300);
+        _printf("Positive:[%d]\n", 7620000000);
+        _printf("Negative:[%i]\n", 76200000);
+        return (0);
+}

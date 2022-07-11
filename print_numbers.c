@@ -41,3 +41,49 @@ int print_decimal(va_list arg)
 {
         return (print_int(arg));
 }
+/**
+ * print_unsig_deci- function that prints unsigned integers
+ *
+ * Return: counter
+ */
+int print_unsig_deci(va_list arg)
+{
+        unsigned int num;
+	unsigned int i = 1;
+	int cont = 0;
+
+	num = va_arg(arg, int);
+	if (num == 0)
+	{
+		_putchar('0');
+		return (i);
+	}
+	for (;i <= num; i *= 10)
+		cont++;
+	i /= 10;
+	for(; i > 0; i /= 10)
+	{
+		_putchar(((num / i) % 10) + '0');
+	}
+	return (cont); 
+}
+/*
+int print_octa(va_list arg)
+{
+	unsigned int num;
+	unsigned int i = 1;
+	int cont = 0;
+
+	num = va_arg(arg, unsigned int);
+	if (num == 0)
+	{
+		_putchar('0');
+		return (i);
+	}
+	for (;i <= num; i++)
+		cont++;
+	{
+		_putchar(_convert(num, 8));
+	}
+	return (cont);
+}*/

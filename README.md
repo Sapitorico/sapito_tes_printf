@@ -37,11 +37,11 @@ The _printf function (which derives its name from "print formatted") prints a me
         len = _printf("Percent:[%%]\n");
         len2 = printf("Percent:[%%]\n");
         _printf("Len:[%d]\n", len);
-		printf("Len:[%d]\n", len2);
+	printf("Len:[%d]\n", len2);
         _printf("Character:[%c]\n", 'S');
-		_printf("Percent:[%%]\n");
-		_printf("String:[%s]\n", "I am a string de sapito !");
-		_printf("%!\n");
+	_printf("Percent:[%%]\n");
+	_printf("String:[%s]\n", "I am a string de sapito !");
+	_printf("%!\n");
         _printf("Negative:[%d]\n", -2343243240);
         _printf("Negative:[%i]\n", -7602342300);
         _printf("Positive:[%d]\n", 7620000000);
@@ -96,6 +96,10 @@ Soure file that is included in each header file in the correct order, includes l
 
 ##_printf.c
 
+**descritiion:**
+
+Esta función recibe un parametro o argumenot que se imprime en un tipo de formato espesifico. Esta función recorrera todo el argumento y verificará caracter por caracter y tomará una decisión sobre qué hacer con ellos. Devuelve la cantidad de caracteres impresos.
+A medida que avanza, verificará si el carácter actual es un "%", en cualquier otro caso, simplemente imprimirá el carácter que está verificando actualmente y agregará uno al contador. En el caso de que el carácter sea un "%" y el siguiente carácter sea otro "%", imprimirá solo uno de esos símbolos y agregará uno al contador. En el caso de que el siguiente carácter no sea el símbolo la función hará una llamada a otra función que va a tomar la decisión de qué hacer con el carácter que está justo después del "%". En la función get_formatted_func, la funcnion buscara una coincidencia para cualquiera de las funciones disponibles sii encuentra una coincidencia, la función realiza una llamada a la función correspondiente que imprime la función de formato solicitada. De lo contrario, solo imprime "%" y el siguiente carácter. En cada una de las funciones llamadas, el script pasará por los argumentos e imprimirá cada uno de los caracteres. Estas funciones devolverán la cantidad de caracteres impresos para que el contador principal agregue esos nuevos caracteres contados. A medida que avanza por la matriz de formato, eventualmente encontrará un carácter NULO que será el carácter final. Cuando eso suceda, terminará la función devolviendo el contador como un entero.
 
 
 

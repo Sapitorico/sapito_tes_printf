@@ -25,9 +25,9 @@ The _printf function (which derives its name from "print formatted") prints a me
 | %r | prints the reversed string | `int print_strev(va_list arg);` |
 | %% | Prints the % symbol |
 
-## Examples used 
+## Examples used
 ```c
- 		int len;
+                int len;
         int len2;
         unsigned int ui;
 
@@ -57,16 +57,16 @@ The _printf function (which derives its name from "print formatted") prints a me
 ##_printf.c
 
 
-    int _printf(const char *format, ...)		/**prototype function _printf**/
+    int _printf(const char *format, ...)                /**prototype function _printf**/
     {
             va_list args;
             int const1 = 0, const2 = 0;
             int (*f)(va_list arg);
-    
+
             va_start(args, format);         /**initialize arguments list**/
-            if (!format)							/**initialize resiviod parameter**/
+            if (!format)                                                        /**initialize resiviod parameter**/
                     return (-1);
-            while (format[const1] != '\0')  	/*check and recognize the length of format*/
+            while (format[const1] != '\0')      /*check and recognize the length of format*/
             {
                     for (; format[const1] != '%' && format[const1]; const1++)       /*recognize and position in the % indicator*/
                     {
@@ -81,7 +81,7 @@ The _printf function (which derives its name from "print formatted") prints a me
                     if (f != NULL)
                     {
                             const2 += f(args);
-                            const1 += 2;    		/*print the following characters*/
+                            const1 += 2;                /*print the following characters*/
                             continue;
                     }
                     if (!format[const1 + 1])
@@ -96,10 +96,45 @@ The _printf function (which derives its name from "print formatted") prints a me
                     const1++;
             }
             va_end(args);
-            return (const2);      	  /*Returns the number of characters printed*/
+            return (const2);              /*Returns the number of characters printed*/
     }
 
 ##FLOWCHART
+
+```flow
+st=>start: _printf
+oparg=>operation: receives an argument
+cond=>condition: !format
+end1=>end: return error 
+cond1=>condition: length of format
+[const1++] != '\0';
+condfor=>condition: format[const1] 
+!= % const++;
+op2=>operation: _putchar(format[const1]);+const2++;
+cond2=>condition: !format[const1]
+end2=>end: return (const2);
+op4=>operation: f = get_formatted_funct 
+format[const1 + 1]
+cond3=>condition: f != NULL
+op5=>operation: const2 += f(args);
+const1 += 2;
+continue;
+cond4=>condition: !format[const1 + 1]
+end3=>end: return (-1);
+op6=>operation: _putchar(format[const1]);+const2++;
+cond5=>condition: format[const1 + 1] == '%'
+op7=>operation: const1 += 2;
+op8=>operation: const1++;
+
+st->oparg->cond(no)->cond1(yes)->condfor(yes)->op2
+op2->cond2(no)->op4->cond3(yes)->op5
+op5->cond4(no)->op6->cond5(yes)->op7->op8
+cond2(yes)->end2
+cond3(no)->cond4
+op5->cond4(yes)->end3
+cond(yes)->end1
+condfor(no)->cond2
+```
 
 #### get_formatted_funct.c
 
@@ -119,15 +154,13 @@ The _printf function (which derives its name from "print formatted") prints a me
                 {'r', print_strev}
         };
 ```
-**description:**This function is responsible for finding a match with the parameter received in the structure (funcs_ls), calls the function corresponding to that format, returns a pointer to that specifier function and the number of characters that are stored in the count variable ```c
-if (*format == funcs_ls[i].types)
-                        return (funcs_ls[i].f);
-``` 
+**description:**This function is responsible for finding a match with the parameter received in the structure (funcs_ls), calls the function corresponding to that format, returns a pointer to that specifier function and the number of characters that are stored in the count variable 
+`if (*format == funcs_ls[i].types)
+                        return (funcs_ls[i].f);`
 -Compare a format structure with the received argument pattern and return the corresponding function
-
 #main.h
 
-####main.h: 
+####main.h:
 
 contains all function prototypes used for _printf.
 

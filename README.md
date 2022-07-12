@@ -58,12 +58,12 @@ The _printf function (which derives its name from "print formatted") prints a me
 Soure file that is included in each header file in the correct order, includes libreries, structure and prototypes.
 
 #### libraries
-    #include <stdio.h>
-    #include <stdarg.h>
-    #include <stdlib.h>
-    #include <string.h>
+    #include <stdio.h> es un archivo de cabecera que tiene la información necesaria para incluir las funciones relacionadas con la entrada/salida en nuestro programa.
+    #include <stdarg.h> debe contener un conjunto de macros que permite escribir funciones portátiles que aceptan listas de argumentos variables - va_list se definirá para las variables utilizadas para recorrer la lista - va_start () se invoca para inicializar ap al comienzo de la lista antes de cualquier llamada a va_arg ().
+    #include <stdlib.h>  Es el archivo de cabecera de la biblioteca estándar de propósito general del lenguaje de programación C. Contiene los prototipos de funciones de C para gestión de memoria dinámica, control de procesos y otras.
+    #include <string.h> El encabezado string.h define un tipo de variable, una macro y varias funciones para manipular matrices(array) de caracteres.
     #include <unistd.h>
-    #include <limits.h>
+    #include <limits.h> El encabezado limits.h determina varias propiedades de los distintos tipos de variables. Las macros definidas en este encabezado limitan los valores de varios tipos de variables como char, int y long.
     
 
 #### prototypes

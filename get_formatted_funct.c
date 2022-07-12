@@ -13,7 +13,6 @@ int (*get_formatted_funct(const char *format))(va_list arg)
                 {'i', print_int},
                 {'d', print_decimal},
 		{'u', print_unsig_deci},
-		/*{'o', print_octa},*/
 		{'r', print_strev}
         };
         int i = 0;

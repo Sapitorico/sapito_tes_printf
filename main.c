@@ -28,6 +28,5 @@ int main(void)
         _printf("Unknown:[%r]\n", "hola");
 	ui = (unsigned int)INT_MAX + 1024;
 	_printf("Unsigned:[%u]\n", ui);
-	_printf("Unsigned octal:[%o]\n", ui);
         return (0);
 }
